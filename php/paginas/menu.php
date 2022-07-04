@@ -38,6 +38,9 @@
             <li><a class="dropdown-item" href="triangulo.php">Triangulo <img src="../../img/triangle.svg"></a></li>
             <li><a class="dropdown-item" href="circulo.php">Circulo <img src="../../img/circle.svg"></a></li>
             <li><a class="dropdown-item" href="cubo.php">Cubo <img src="../../img/cube.png"></a></li>
+            <li><a class="dropdown-item" href="esfera.php">Esfera <img src="../../img/sphere.png"></a></li>
+            <li><a class="dropdown-item" href="icosaedro.php">Icosaedro <img src="../../img/icosaedro.png"></a></li>
+            <li><a class="dropdown-item" href="icosidodecaedro.php">Icosidodecaedro <img src="../../img/Icosidodecaedro.png"></a></li>
           </ul>
         </li>
           <li class="nav-item dropdown">
@@ -54,4 +57,4 @@
   </div>
 </nav>
 <br>
-<script src="bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="../../bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>

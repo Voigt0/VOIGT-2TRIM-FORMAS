@@ -7,17 +7,17 @@
     $id = null;
     if(isset($_GET['id'])) {
         $id = $_GET['id'];
-        $data = Circulo::consultarData($id);
+        $data = Icosaedro::consultarData($id);
     }
    
     //Declarar variáveis
     $operation = isset($_GET['operation']) ? $_GET['operation'] : "";
-    $table = "circulo";
+    $table = "icosaedro";
     $busca = isset($_POST["busca"]) ? $_POST["busca"] : "1";
     $pesquisa = isset($_POST["pesquisa"]) ? $_POST["pesquisa"] : "";
     $operation = isset($_GET['operation']) ? $_GET['operation'] : "";
 
-    $raio = isset($_POST['raio']) ? $_POST['raio'] : 0;
+    $lado = isset($_POST['lado']) ? $_POST['lado'] : 0;
     $cor = isset($_POST['cor']) ? $_POST['cor'] : "";
     $tabuleiro_id = isset($_POST['tabuleiro_id']) ? $_POST['tabuleiro_id'] : "";
 ?>
@@ -25,7 +25,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Tabela Círculo</title>
+    <title>Tabela Icosaedro</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    <script src='../js/main.js'></script>    
@@ -46,14 +46,14 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade <?php if(!isset($id)){echo 'show active';} ?>" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab" tabindex="0">
                 <br>    
-                <h1>Tabela Círculo</h1>
+                <h1>Tabela Icosaedro</h1>
                 <br>
                 <form action="" method="post" style="padding-left: 5vw; padding-right: 5vw;">
                     <input class="form-check-input" type="radio" id="id" name="busca" value="1" <?php if($busca == "1"){echo "checked";}?>>
                     <label for="huey"><h3>#ID</h3></label>
                     <br>
-                    <input class="form-check-input" type="radio" id="raio" name="busca" value="2" <?php if($busca == "2"){echo "checked";}?>>
-                    <label for="huey"><h3>Raio</h3></label>
+                    <input class="form-check-input" type="radio" id="lado" name="busca" value="2" <?php if($busca == "2"){echo "checked";}?>>
+                    <label for="huey"><h3>Lado</h3></label>
                     <br>
                     <input class="form-check-input" type="radio" id="cor" name="busca" value="3" <?php if($busca == "3"){echo "checked";}?>>
                     <label for="huey"><h3>Cor</h3></label>
@@ -72,7 +72,7 @@
                         <thead>
                             <tr class="table-dark">
                                 <th scope="col">#ID</th>
-                                <th scope="col">Raio</th>
+                                <th scope="col">Lado</th>
                                 <th scope="col">Cor</th>
                                 <th scope="col">Tabuleiro</th>
                                 <th scope="col">Alterar</th>
@@ -83,17 +83,17 @@
                         <tbody>
                         <?php
                             //Filtro da tabela exibida
-                            $tabela = Circulo::listar($busca, $pesquisa);
+                            $tabela = Icosaedro::listar($busca, $pesquisa);
                             foreach($tabela as $key => $value) {
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $value['id'];?></th>
-                                <td scope="row"><?php echo $value['raio'];?></td>
+                                <td scope="row"><?php echo $value['lado'];?></td>
                                 <td scope="row"><div style="height: 5vh; background-color: <?php echo $value['cor'];?>"> <?php echo $value['cor'];?> </div></td>
                                 <td scope="row"><?php echo $value['tabuleiro_id'];?></td>
-                                <td scope="row"><a href="circulo.php?id=<?php echo $value['id'];?>"><img src="../../img/edit.svg" style="width: 3vw;"></a></td>
-                                <td><a onclick="return confirm('Deseja mesmo excluir?')" href="../controle/controleGeral.php?id=<?php echo $value['id'];?>&operation=delete&table=circulo"><img src="../../img/delete.svg" style="width: 3vw;"></a></td>
-                                <td><a href="../show/showCirculo.php?id=<?php echo $value['id']; ?>&raio=<?php echo $value['raio'];?>&cor=<?php echo str_replace('#', '%23', $value['cor']);?>&tabuleiro_id=<?php echo $value['tabuleiro_id']?>"><img src='../../img/list.svg' style="width: 3vw;"></a></td>
+                                <td scope="row"><a href="icosaedro.php?id=<?php echo $value['id'];?>"><img src="../../img/edit.svg" style="width: 3vw;"></a></td>
+                                <td><a onclick="return confirm('Deseja mesmo excluir?')" href="../controle/controleGeral.php?id=<?php echo $value['id'];?>&operation=delete&table=icosaedro"><img src="../../img/delete.svg" style="width: 3vw;"></a></td>
+                                <td><a href="../show/showIcosaedro.php?id=<?php echo $value['id']; ?>&lado=<?php echo $value['lado'];?>&cor=<?php echo str_replace('#', '%23', $value['cor']);?>&tabuleiro_id=<?php echo $value['tabuleiro_id']?>"><img src='../../img/list.svg' style="width: 3vw;"></a></td>
                             </tr>
                         <?php
                             } 
@@ -103,19 +103,19 @@
                 </div>
             </div>
             <div class="tab-pane fade  <?php if(isset($id)){echo 'show active';} ?>" id="nav-form" role="tabpanel" aria-labelledby="nav-form-tab" tabindex="0">
-                <form action="<?php if(isset($_GET['id'])) { echo "../controle/controleGeral.php?id=$id&operation=update&table=circulo";} else {echo "../controle/controleGeral.php?operation=create&table=circulo";} ?>" method="post" id="form" style="padding-left: 5vw; padding-right: 5vw;">
+                <form action="<?php if(isset($_GET['id'])) { echo "../controle/controleGeral.php?id=$id&operation=update&table=icosaedro";} else {echo "../controle/controleGeral.php?operation=create&table=icosaedro";}?>" method="post" id="form" style="padding-left: 5vw; padding-right: 5vw;">
                     <br>
-                    <h1>Cadastro Círculo</h1>
+                    <h1>Cadastro Icosaedro</h1>
                     <br>
                     <div class="form-group">
-                        <label for="">Valor raio:</label>
-                        <input required type="number" class="form-control" name="raio" id="raio" placeholder="Digite o raio" value="<?php if (isset($data[0]['raio'])){echo $data[0]['raio'];}?>">
+                        <label for="">Valor lado:</label>
+                        <input required type="number" class="form-control" name="lado" id="lado" placeholder="Digite o lado" value="<?php if (isset($data[0]['lado'])){echo $data[0]['lado'];}?>">
                     </div>
                     <br>
                     <div class="row form-group">
                         <label for="">Valor cor:</label><br>
                         <div class="col-4">
-                            <input required type="color" class="form-control" name="cor" id="cor" placeholder="Digite a cor" value="<?php if (isset($data[0]['cor'])){echo $data[0]['cor'];}?>">
+                            <input required type="color" class="form-control" name="cor" id="cor" placeholder="Digite o cor" value="<?php if (isset($data[0]['cor'])){echo $data[0]['cor'];}?>">
                         </div>
                     </div>
                     <br>

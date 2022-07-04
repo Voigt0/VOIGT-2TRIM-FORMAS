@@ -10,7 +10,7 @@
         }
 
         //Métodos Get e Set
-        public function getraio() {
+        public function getRaio() {
             return $this->raio;
         }
 
@@ -65,7 +65,7 @@
             if ($buscar > 0)
             switch($buscar){
                 case(1): $sql .= " WHERE id like :procurar"; $procurar = "%".$procurar."%"; break;
-                case(2): $sql .= " WHERE raio like :procurar"; $procurar .="%"; break;
+                case(2): $sql .= " WHERE raio like :procurar"; $procurar = "%".$procurar."%";; break;
                 case(3): $sql .= " WHERE cor like :procurar"; $procurar = "%".$procurar."%"; break;
                 case(4): $sql .= " WHERE tabuleiro_id like :procurar"; $procurar = "%".$procurar."%"; break;
             }
@@ -77,17 +77,17 @@
         }
         
         public function area() {
-            $area = pi() * pow($this->raio, 2);
+            $area = pi() * pow($this->getRaio(), 2);
             return $area;
         }
 
         public function perimetro() {
-            $perimetro = 2 * pi() * $this->raio;
+            $perimetro = 2 * pi() * $this->getRaio();
             return $perimetro;
         }
 
         public function diametro() {
-            $diametro = 2 * $this->raio;
+            $diametro = 2 * $this->getRaio();
             return $diametro;
         }
 

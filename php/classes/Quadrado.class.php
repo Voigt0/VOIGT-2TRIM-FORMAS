@@ -59,8 +59,8 @@
             $sql = "SELECT * FROM quadrado";
             if ($buscar > 0)
                 switch($buscar){
-                    case(1): $sql .= " WHERE id LIKE :procurar ORDER BY id"; $procurar = $procurar."%";  break;
-                    case(2): $sql .= " WHERE lado LIKE :procurar ORDER BY lado"; $procurar = $procurar."%"; break;
+                    case(1): $sql .= " WHERE id LIKE :procurar ORDER BY id"; $procurar = "%".$procurar."%";  break;
+                    case(2): $sql .= " WHERE lado LIKE :procurar ORDER BY lado"; $procurar = "%".$procurar."%"; break;
                     case(3): $sql .= " WHERE cor LIKE :procurar ORDER BY cor"; $procurar = "%".$procurar."%";  break;
                 }
             if ($buscar > 0)

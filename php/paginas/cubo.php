@@ -27,7 +27,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Tabela Cubo</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    <script src='../js/main.js'></script>    
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 </head>
@@ -49,10 +49,10 @@
                 <h1>Tabela Cubo</h1>
                 <br>
                 <form action="" method="post" style="padding-left: 5vw; padding-right: 5vw;">
-                    <input type="radio" id="id" name="busca" value="1" <?php if($busca == "1"){echo "checked";}?>>
+                    <input class="form-check-input" type="radio" id="id" name="busca" value="1" <?php if($busca == "1"){echo "checked";}?>>
                     <label for="huey"><h3>#ID</h3></label>
                     <br>
-                    <input type="radio" id="cor" name="busca" value="2" <?php if($busca == "2"){echo "checked";}?>>
+                    <input class="form-check-input" type="radio" id="cor" name="busca" value="2" <?php if($busca == "2"){echo "checked";}?>>
                     <label for="huey"><h3>Cor</h3></label>
                     <br><br>
                     <div class="" style="padding-left: 5vw;">
@@ -86,7 +86,7 @@
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $value['id'];?></th>
-                                <td scope="row" style="background-color: <?php echo $value['cor'];?>"><?php echo $value['cor'];?></td>
+                                <td scope="row"><div style="height: 5vh; background-color: <?php echo $value['cor'];?>"> <?php echo $value['cor'];?> </div></td>
                                 <td scope="row"><?php echo $value['quadrado_id'];?></td>
                                 <td scope="row"><?php echo $value['tabuleiro_id'];?></td>
                                 <td scope="row"><?php echo $value['lado'];?></td>

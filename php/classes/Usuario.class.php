@@ -60,10 +60,13 @@
                     "<br>Senha: ".$this->getSenha().
                     "<br>Situação: ";
                     session_start();
-                    if($_SESSION['login'] == $this->getLogin())
-                        $str .= "Logado";
-                    else
-                        $str .= "Não logado";
+                    $situacao = "Não logado";
+                    if (isset($_SESSION["login"])) {
+                        if($_SESSION['login'] == $this->getLogin())
+
+                            $situacao = "Logado";
+                    }
+                    $str .= $situacao;
             return $str;
         }
 

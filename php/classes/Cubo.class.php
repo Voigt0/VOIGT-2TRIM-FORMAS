@@ -32,7 +32,7 @@
         //Método toString
         public function __toString() {
             $str = parent::__toString();
-            $str .= "<br>[Cubo]".
+            $str .= "<br><br>[Cubo]".
                     "<br>ID do Quadrado: ".$this->getCuboId().
                     "<br>ID do Cubo: ".$this->getId().
                     "<br>Cor: ".$this->getCor().

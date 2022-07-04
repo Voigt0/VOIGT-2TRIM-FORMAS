@@ -45,12 +45,11 @@
                     "<br>Lado 1: ".$this->getLado1().
                     "<br>Lado 2: ".$this->getLado2().
                     "<br>Lado 3: ".$this->getLado3().
-                    "<br>Cor: ".$this->getcor().
-                    "<br>Área: ".$this->Area().
-                    "<br>Perímetro: ".$this->Perimetro().
-                    "<br>Ângulo Alpha: ".round(rad2deg($this->Alpha()),2)."°".
-                    "<br>Ângulo Beta: ".round(rad2deg($this->Beta()),2)."°".
-                    "<br>Ângulo Gamma: ".round(rad2deg($this->Gamma()),2)."°".
+                    "<br>Área: ".$this->area().
+                    "<br>Perímetro: ".$this->perimetro().
+                    "<br>Ângulo Alpha: ".round(rad2deg($this->alpha()),2)."°".
+                    "<br>Ângulo Beta: ".round(rad2deg($this->beta()),2)."°".
+                    "<br>Ângulo Gamma: ".round(rad2deg($this->gamma()),2)."°".
                     "<br>Tipo: ".$this->tipo();
             return $str;
         }
@@ -92,7 +91,7 @@
             if ($buscar > 0)
             switch($buscar){
                 case(1): $sql .= " WHERE id like :procurar"; $procurar = "%".$procurar."%"; break;
-                case(2): $sql .= " WHERE lado1 like :procurar"; $procurar .="%"; break;
+                case(2): $sql .= " WHERE lado1 like :procurar"; $procurar = "%".$procurar."%"; break;
                 case(3): $sql .= " WHERE cor like :procurar"; $procurar = "%".$procurar."%"; break;
                 case(4): $sql .= " WHERE tabuleiro_id like :procurar"; $procurar = "%".$procurar."%"; break;
             }
